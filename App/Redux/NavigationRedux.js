@@ -1,3 +1,4 @@
+/* eslint-disable  */
 import AppNavigation from '../Navigation/AppNavigation'
 
 export const reducer = (state, action) => {

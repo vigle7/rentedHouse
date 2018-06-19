@@ -3,34 +3,31 @@ import { Text, View } from 'react-native'
 import R from 'ramda'
 import { ApplicationStyles } from '../Themes'
 import DebugConfig from '../Config/DebugConfig'
-let globalComponentExamplesRegistry = []
-let globalPluginExamplesRegistry = []
 
-export const addComponentExample = (title, usage = () => {}) => { if (DebugConfig.includeExamples) globalComponentExamplesRegistry.push({title, usage}) } // eslint-disable-line
+const globalComponentExamplesRegistry = []
+const globalPluginExamplesRegistry = []
 
-export const addPluginExample = (title, usage = () => {}) => { if (DebugConfig.includeExamples) globalPluginExamplesRegistry.push({title, usage}) } // eslint-disable-line
+export const addComponentExample = (title, usage = () => { }) => { if (DebugConfig.includeExamples) globalComponentExamplesRegistry.push({ title, usage }) } // eslint-disable-line
 
-const renderComponentExample = (example) => {
-  return (
-    <View key={example.title}>
-      <View style={ApplicationStyles.darkLabelContainer}>
-        <Text style={ApplicationStyles.darkLabel}>{example.title}</Text>
-      </View>
-      {example.usage.call()}
+export const addPluginExample = (title, usage = () => { }) => { if (DebugConfig.includeExamples) globalPluginExamplesRegistry.push({ title, usage }) } // eslint-disable-line
+
+const renderComponentExample = example => (
+  <View key={example.title}>
+    <View style={ApplicationStyles.darkLabelContainer}>
+      <Text style={ApplicationStyles.darkLabel}>{example.title}</Text>
     </View>
-  )
-}
+    {example.usage.call()}
+  </View>
+)
 
-const renderPluginExample = (example) => {
-  return (
-    <View key={example.title}>
-      <View style={ApplicationStyles.darkLabelContainer}>
-        <Text style={ApplicationStyles.darkLabel}>{example.title}</Text>
-      </View>
-      {example.usage.call()}
+const renderPluginExample = example => (
+  <View key={example.title}>
+    <View style={ApplicationStyles.darkLabelContainer}>
+      <Text style={ApplicationStyles.darkLabel}>{example.title}</Text>
     </View>
-  )
-}
+    {example.usage.call()}
+  </View>
+)
 
 export const renderComponentExamples = () => R.map(renderComponentExample, globalComponentExamplesRegistry)
 
@@ -41,5 +38,5 @@ export default {
   renderComponentExamples,
   addComponentExample,
   renderPluginExamples,
-  addPluginExample
+  addPluginExample,
 }

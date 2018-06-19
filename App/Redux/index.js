@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 import configureStore from './CreateStore'
@@ -8,7 +9,7 @@ import ReduxPersist from '../Config/ReduxPersist'
 export const reducers = combineReducers({
   nav: require('./NavigationRedux').reducer,
   github: require('./GithubRedux').reducer,
-  search: require('./SearchRedux').reducer
+  search: require('./SearchRedux').reducer,
 })
 
 export default () => {
@@ -19,7 +20,8 @@ export default () => {
     finalReducers = persistReducer(persistConfig, reducers)
   }
 
-  let { store, sagasManager, sagaMiddleware } = configureStore(finalReducers, rootSaga)
+  let { sagasManager } = configureStore(finalReducers, rootSaga)
+  const { store, sagaMiddleware } = configureStore(finalReducers, rootSaga)
 
   if (module.hot) {
     module.hot.accept(() => {

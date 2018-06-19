@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers'
 import Rehydration from '../Services/Rehydration'
 import ReduxPersist from '../Config/ReduxPersist'
 import Config from '../Config/DebugConfig'
-import createSagaMiddleware from 'redux-saga'
-import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers'
 import ScreenTracking from './ScreenTrackingMiddleware'
 
 // creates the store
@@ -17,7 +17,7 @@ export default (rootReducer, rootSaga) => {
 
   middleware.push(createReactNavigationReduxMiddleware(
     'root',
-    state => state.nav
+    state => state.nav,
   ))
 
   /* ------------- Analytics Middleware ------------- */
@@ -43,11 +43,11 @@ export default (rootReducer, rootSaga) => {
   }
 
   // kick off root saga
-  let sagasManager = sagaMiddleware.run(rootSaga)
+  const sagasManager = sagaMiddleware.run(rootSaga)
 
   return {
     store,
     sagasManager,
-    sagaMiddleware
+    sagaMiddleware,
   }
 }

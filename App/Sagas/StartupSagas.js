@@ -1,12 +1,14 @@
+/* global __DEV__ */
+import { is } from 'ramda'
 import { put, select } from 'redux-saga/effects'
 import GithubActions, { GithubSelectors } from '../Redux/GithubRedux'
-import { is } from 'ramda'
 
 // exported to make available for tests
-export const selectAvatar = GithubSelectors.selectAvatar
+export const { selectAvatar } = GithubSelectors
 
 // process STARTUP actions
-export function * startup (action) {
+// export function* startup(action) {
+export function* startup() {
   if (__DEV__ && console.tron) {
     // straight-up string logging
     console.tron.log('Hello, I\'m an example of how to log via Reactotron.')
@@ -14,7 +16,7 @@ export function * startup (action) {
     // logging an object for better clarity
     console.tron.log({
       message: 'pass objects for better logging',
-      someGeneratorFunction: selectAvatar
+      someGeneratorFunction: selectAvatar,
     })
 
     // fully customized!
@@ -28,10 +30,11 @@ export function * startup (action) {
         subObject,
         someInlineFunction: () => true,
         someGeneratorFunction: startup,
-        someNormalFunction: selectAvatar
-      }
+        someNormalFunction: selectAvatar,
+      },
     })
   }
+
   const avatar = yield select(selectAvatar)
   // only get if we don't have it yet
   if (!is(String, avatar)) {
