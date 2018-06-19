@@ -1,0 +1,42 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/prop-types": [
+      "enabled",
+      {
+        "ignore": "ignore",
+        "customValidators": "customValidator"
+      }
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "import/no-unresolved": "off",
+    "import/extensions": [
+      "error",
+      "never",
+      {
+        "js": "ignorePackages"
+      }
+    ],
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "indent": "off",
+    "max-len": [
+      "error",
+      200
+    ],
+    "react/prefer-stateless-function": "off"
+  }
+}
