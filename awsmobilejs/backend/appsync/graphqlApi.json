@@ -1,0 +1,4 @@
+{
+    "name": "rentedHouse",
+    "authenticationType": "AWS_IAM"
+}

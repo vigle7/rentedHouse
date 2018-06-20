@@ -14,7 +14,7 @@
     "test:watch": "jest --watch",
     "updateSnapshot": "jest --updateSnapshot",
     "coverage": "jest --coverage && open coverage/lcov-report/index.html || xdg-open coverage/lcov-report/index.html",
-    "android:build": "cd android && ./gradlew assembleRelease",
+    "build": "exp build:android",
     "android:install": "cd android && ./gradlew assembleRelease && ./gradlew installRelease",
     "android:hockeyapp": "cd android && ./gradlew assembleRelease && puck -submit=auto app/build/outputs/apk/app-release.apk",
     "android:devices": "$ANDROID_HOME/platform-tools/adb devices",
@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "apisauce": "^0.14.3",
+    "aws-amplify": "^0.4.4",
+    "aws-amplify-react-native": "^0.2.15",
     "expo": "^26.0.0",
     "format-json": "^1.0.3",
     "identity-obj-proxy": "^3.0.0",
