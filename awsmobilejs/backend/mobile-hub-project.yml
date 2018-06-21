@@ -4,38 +4,38 @@ apps:
 features:
   cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
     components:
-      sampleCloudApi: !com.amazonaws.mobilehub.v0.API 
+      HouseCRUD: !com.amazonaws.mobilehub.v0.API 
         attributes:
-          name: sampleCloudApi
+          name: HouseCRUD
           requires-signin: false
           sdk-generation-stage-name: Development
         paths:
-          /items: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180620163319.zip
-            description: 'Handler for calls to resource path : /items/{proxy+}'
+          /House: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/House-20180621171328.zip
+            description: 'Handler for calls to resource path : /House/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: tA4Y7jsycF4o4O1vhBlerRR43RC9hJfjbzEO+z6YcD8=
+            hashcode: xaAuagxIMfhV+7nzLJ8C4R5JE+RDs3b7Sgwot+vxOgE=
             memorySize: '128'
-            modified: '2018-06-20T08:35:19.913+0000'
-            name: sampleLambda
+            modified: '2018-06-21T09:14:39.750+0000'
+            name: House
             runtime: nodejs6.10
             timeout: '3'
-            version: B8ynPcRHrJlE32opaed.s4Rd5IImpHML
-          '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180620163319.zip
-            description: 'Handler for calls to resource path : /items/{proxy+}'
+            version: .1NvngOpPdrEQ4beIs3vzH5l6MTJFb3N
+          '/House/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/House-20180621171328.zip
+            description: 'Handler for calls to resource path : /House/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: tA4Y7jsycF4o4O1vhBlerRR43RC9hJfjbzEO+z6YcD8=
+            hashcode: xaAuagxIMfhV+7nzLJ8C4R5JE+RDs3b7Sgwot+vxOgE=
             memorySize: '128'
-            modified: '2018-06-20T08:35:19.913+0000'
-            name: sampleLambda
+            modified: '2018-06-21T09:14:39.750+0000'
+            name: House
             runtime: nodejs6.10
             timeout: '3'
-            version: 8Lb69xTCHSnIP4PJa_4haHvi4Cw2YJsn
+            version: 8logtEv899QpclbZdkqiPcp1_9QnwTk4
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
@@ -48,23 +48,14 @@ features:
         tables:
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
-              email: S
-              personId: S
-              personName: S
-              phone: S
-              teamId: S
-            hashKeyName: teamId
-            hashKeyType: S
-            indexes:
-              - !com.amazonaws.mobilehub.v0.NoSQLIndex 
-                hashKeyName: teamId
-                hashKeyType: S
-                indexName: personName-index
-                rangeKeyName: personName
-                rangeKeyType: S
-            rangeKeyName: personId
-            rangeKeyType: S
-            tableName: ___DYNAMIC_PREFIX___-AWSMobileTable
+              Floor: N
+              HouseId: N
+              Price: N
+            hashKeyName: HouseId
+            hashKeyType: N
+            rangeKeyName: ''
+            rangeKeyType: ''
+            tableName: ___DYNAMIC_PREFIX___-House
             tablePrivacy: public
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:

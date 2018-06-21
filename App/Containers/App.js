@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import Amplify from 'aws-amplify-react-native'
-import { Analytics } from 'aws-amplify'
+import Amplify from 'aws-amplify'
 import aws_exports from '../../src/aws-exports'
 import '../Config'
 import DebugConfig from '../Config/DebugConfig'
@@ -24,11 +23,6 @@ Amplify.configure(aws_exports)
 
 class App extends Component {
   render() {
-    const genre = 222
-    Analytics.record({
-      name: 'albumVisit',
-      attributes: { genre, artist: '' },
-    })
     return (
       <Provider store={store}>
         <RootContainer />

@@ -38,6 +38,8 @@
       200
     ],
     "react/prefer-stateless-function": "off",
-    "camelcase": "off"
+    "camelcase": "off",
+    "react/no-unescaped-entities": "off",
+    "no-debugger": "off"
   }
 }
