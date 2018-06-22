@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Text, View, Button, TextInput, StyleSheet } from 'react-native'
+import autobind from 'autobind-decorator'
 // import Amplify, { API } from 'aws-amplify'
 import { API } from 'aws-amplify'
 // import aws_exports from '../../src/aws-exports'
 
 // Amplify.configure(aws_exports)
+
 export default class LaunchScreen extends Component {
   constructor(props) {
     super(props)
@@ -16,6 +18,7 @@ export default class LaunchScreen extends Component {
 
 
   // noteId is the primary key of the particular record you want to fetch
+  @autobind
   async getNote() {
     const path = `/House/object/${this.state.HouseId}`
     try {
@@ -27,10 +30,13 @@ export default class LaunchScreen extends Component {
     }
   }
 
+  @autobind
   handleChangeNoteId(event) {
     const HouseId = Number(event)
     this.setState({ HouseId })
   }
+
+  @autobind
   async saveNote() {
     const newHouse = {
       body: {
@@ -52,6 +58,7 @@ export default class LaunchScreen extends Component {
   }
 
   // noteId is the NoteId of the particular record you want to delete
+  @autobind
   async deleteNote() {
     const path = `/House/object/${this.state.HouseId}`
     try {
@@ -67,10 +74,10 @@ export default class LaunchScreen extends Component {
     return (
       <View style={styles.container}>
         <Text>Response: {this.state.apiResponse && JSON.stringify(this.state.apiResponse)}</Text>
-        <Button title="Save Note" onPress={this.saveNote.bind(this)} />
-        <Button title="Get Note" onPress={this.getNote.bind(this)} />
-        <Button title="Delete Note" onPress={this.deleteNote.bind(this)} />
-        <TextInput style={styles.textInput} autoCapitalize="none" onChangeText={this.handleChangeNoteId.bind(this)} />
+        <Button title="Save Note" onPress={this.saveNote} />
+        <Button title="Get Note" onPress={this.getNote} />
+        <Button title="Delete Note" onPress={this.deleteNote} />
+        <TextInput style={styles.textInput} autoCapitalize="none" onChangeText={this.handleChangeNoteId} />
       </View>
     )
   }

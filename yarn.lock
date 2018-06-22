@@ -474,11 +474,11 @@
     component-type "^1.2.1"
     join-component "^1.1.0"
 
-"@storybook/addon-actions@3.4.7":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.4.7.tgz#35e1345d1377e1264f11e319fc06737244c5a23f"
+"@storybook/addon-actions@3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.4.8.tgz#557bae7c7cc60be9d5199ff972b028de8b574f92"
   dependencies:
-    "@storybook/components" "3.4.7"
+    "@storybook/components" "3.4.8"
     babel-runtime "^6.26.0"
     deep-equal "^1.0.1"
     glamor "^2.20.40"
@@ -489,21 +489,21 @@
     react-inspector "^2.2.2"
     uuid "^3.2.1"
 
-"@storybook/addon-links@3.4.7":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-3.4.7.tgz#8d4a72cd92f26f93b2e432d20783e09f6082c75f"
+"@storybook/addon-links@3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-3.4.8.tgz#303e2e37c8abf1861accc95dd9c5f9274bf528ad"
   dependencies:
-    "@storybook/components" "3.4.7"
+    "@storybook/components" "3.4.8"
     babel-runtime "^6.26.0"
     global "^4.3.2"
     prop-types "^15.6.1"
 
 "@storybook/addon-storyshots@^3.2.16":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots/-/addon-storyshots-3.4.7.tgz#3bbc5fb671b44640a5aac61cf9dc5a579c811eed"
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots/-/addon-storyshots-3.4.8.tgz#53e8bd697ca26c5880233d6e63690937e10cf183"
   dependencies:
-    "@storybook/channels" "3.4.7"
-    "@storybook/node-logger" "3.4.7"
+    "@storybook/channels" "3.4.8"
+    "@storybook/node-logger" "3.4.8"
     babel-runtime "^6.26.0"
     glob "^7.1.2"
     global "^4.3.2"
@@ -512,50 +512,50 @@
     puppeteer "^1.2.0"
     read-pkg-up "^3.0.0"
 
-"@storybook/addons@3.4.7", "@storybook/addons@^3.2.16":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.4.7.tgz#ca787c8139c07cd4f36054a84cc0dc3c9698841b"
+"@storybook/addons@3.4.8", "@storybook/addons@^3.2.16":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.4.8.tgz#ff1142d8f0963dd28b7c6f88dc9d3be170ac6600"
 
-"@storybook/channel-postmessage@3.4.7":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-3.4.7.tgz#8293fad1b0f83688b9428cc6fa1518d3faa45e2c"
+"@storybook/channel-postmessage@3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-3.4.8.tgz#4df9b315f6ceff07f33334a633f24c7b81a3ac28"
   dependencies:
-    "@storybook/channels" "3.4.7"
+    "@storybook/channels" "3.4.8"
     global "^4.3.2"
     json-stringify-safe "^5.0.1"
 
-"@storybook/channel-websocket@3.4.7":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/channel-websocket/-/channel-websocket-3.4.7.tgz#df97b05f72072d3fe5bfd80ff60fa545a342a1e3"
+"@storybook/channel-websocket@3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/channel-websocket/-/channel-websocket-3.4.8.tgz#18611927ab8bd61bcc8319bdbe9009420cdf2e73"
   dependencies:
-    "@storybook/channels" "3.4.7"
+    "@storybook/channels" "3.4.8"
     global "^4.3.2"
 
-"@storybook/channels@3.4.7", "@storybook/channels@^3.2.16":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-3.4.7.tgz#b1cc7650d01e677bd02799216b6c1a0f3b903969"
+"@storybook/channels@3.4.8", "@storybook/channels@^3.2.16":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-3.4.8.tgz#df0aff0d20a9597402e76caa7e5ddb088ede3591"
 
-"@storybook/client-logger@3.4.7":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-3.4.7.tgz#577a3dae3f46d95e3dcc1cdb6e8726d5d6324619"
+"@storybook/client-logger@3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-3.4.8.tgz#82d6e1c2cb3e37184cc597a933f64b38fb61b88b"
 
-"@storybook/components@3.4.7":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-3.4.7.tgz#6f2f1d8dd1341d3794abc31b728089fa8021e973"
+"@storybook/components@3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-3.4.8.tgz#45934d9a25374e68152826a162e61b9732871eaf"
   dependencies:
     glamor "^2.20.40"
     glamorous "^4.12.1"
     prop-types "^15.6.1"
 
-"@storybook/core@3.4.7":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/core/-/core-3.4.7.tgz#7622e02ed60a33f90e41d541e73b8f30bd42b5dd"
+"@storybook/core@3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/core/-/core-3.4.8.tgz#a7f077175081b9e957cd3b04442c01606271fd2d"
   dependencies:
-    "@storybook/addons" "3.4.7"
-    "@storybook/channel-postmessage" "3.4.7"
-    "@storybook/client-logger" "3.4.7"
-    "@storybook/node-logger" "3.4.7"
-    "@storybook/ui" "3.4.7"
+    "@storybook/addons" "3.4.8"
+    "@storybook/channel-postmessage" "3.4.8"
+    "@storybook/client-logger" "3.4.8"
+    "@storybook/node-logger" "3.4.8"
+    "@storybook/ui" "3.4.8"
     autoprefixer "^7.2.6"
     babel-runtime "^6.26.0"
     chalk "^2.3.2"
@@ -587,9 +587,9 @@
     "@storybook/react-simple-di" "^1.2.1"
     babel-runtime "6.x.x"
 
-"@storybook/node-logger@3.4.7":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-3.4.7.tgz#f9bc32f245a76eb013b6a2a8a365fa808886a36e"
+"@storybook/node-logger@3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-3.4.8.tgz#8f8abcd51920545c7458385b0b30199ae48ad78a"
   dependencies:
     npmlog "^4.1.2"
 
@@ -611,15 +611,15 @@
     shallowequal "^0.2.2"
 
 "@storybook/react-native@^3.2.16":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/react-native/-/react-native-3.4.7.tgz#2542b26c83a7106d24c09fce9755b8bade5e47a5"
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/react-native/-/react-native-3.4.8.tgz#e2f32602bb0bc6c892aec306b6dc3c1111534ac5"
   dependencies:
-    "@storybook/addon-actions" "3.4.7"
-    "@storybook/addon-links" "3.4.7"
-    "@storybook/addons" "3.4.7"
-    "@storybook/channel-websocket" "3.4.7"
-    "@storybook/core" "3.4.7"
-    "@storybook/ui" "3.4.7"
+    "@storybook/addon-actions" "3.4.8"
+    "@storybook/addon-links" "3.4.8"
+    "@storybook/addons" "3.4.8"
+    "@storybook/channel-websocket" "3.4.8"
+    "@storybook/core" "3.4.8"
+    "@storybook/ui" "3.4.8"
     babel-loader "^7.1.4"
     babel-plugin-macros "^2.2.0"
     babel-plugin-syntax-async-functions "^6.13.0"
@@ -670,11 +670,11 @@
   dependencies:
     babel-runtime "^6.5.0"
 
-"@storybook/ui@3.4.7":
-  version "3.4.7"
-  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-3.4.7.tgz#59a8c0c56e1e467e0cfcce238d1424d338561311"
+"@storybook/ui@3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-3.4.8.tgz#73245f02a714cc3de0bb1b62261ec64b6d0d65ae"
   dependencies:
-    "@storybook/components" "3.4.7"
+    "@storybook/components" "3.4.8"
     "@storybook/mantra-core" "^1.7.2"
     "@storybook/podda" "^1.2.3"
     "@storybook/react-komposer" "^2.0.3"
@@ -847,8 +847,8 @@ amazon-cognito-auth-js@^1.1.9:
     js-cookie "^2.1.4"
 
 amazon-cognito-identity-js@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/amazon-cognito-identity-js/-/amazon-cognito-identity-js-2.0.10.tgz#2ef1c1893f4aa8c96a07fbff43606adbbb3674d2"
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/amazon-cognito-identity-js/-/amazon-cognito-identity-js-2.0.11.tgz#64367625e7fd21dbde417fac9d6d234ad291e9e4"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -1181,15 +1181,19 @@ auth0-js@^7.4.0:
     xtend "~2.1.1"
 
 auth0@^2.7.0:
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/auth0/-/auth0-2.9.1.tgz#85e088035f29925ed086da94d811288a65f5835c"
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/auth0/-/auth0-2.10.0.tgz#8f08e45773405cc121e0fdbc3828524dbfaa53dc"
   dependencies:
     bluebird "^2.10.2"
     lru-memoizer "^1.11.1"
     object.assign "^4.0.4"
     request "^2.83.0"
-    rest-facade "^1.10.0"
+    rest-facade "^1.10.1"
     retry "^0.10.1"
+
+autobind-decorator@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/autobind-decorator/-/autobind-decorator-2.1.0.tgz#4451240dbfeff46361c506575a63ed40f0e5bc68"
 
 autoprefixer@^6.3.1:
   version "6.7.7"
@@ -1214,14 +1218,14 @@ autoprefixer@^7.2.6:
     postcss-value-parser "^3.2.3"
 
 aws-amplify-react-native@^0.2.16:
-  version "0.2.16"
-  resolved "https://registry.yarnpkg.com/aws-amplify-react-native/-/aws-amplify-react-native-0.2.16.tgz#05504e1bbed6b65e74bcacefc639300e576e4bb5"
+  version "0.2.17"
+  resolved "https://registry.yarnpkg.com/aws-amplify-react-native/-/aws-amplify-react-native-0.2.17.tgz#84721c45104a323153f8c667cc462b5fa0d8f3c2"
   dependencies:
-    aws-amplify "^0.4.5"
+    aws-amplify "^0.4.6"
     axios "^0.17.1"
     babel-preset-es2015 "^6.24.1"
 
-aws-amplify@^0.4.5:
+aws-amplify@^0.4.5, aws-amplify@^0.4.6:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/aws-amplify/-/aws-amplify-0.4.5.tgz#8ce6b9eff8c72b1530206aa193cdadbb487c3c29"
   dependencies:
@@ -1712,7 +1716,7 @@ babel-plugin-transform-class-properties@^6.18.0, babel-plugin-transform-class-pr
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-plugin-transform-decorators-legacy@^1.3.4:
+babel-plugin-transform-decorators-legacy@^1.3.4, babel-plugin-transform-decorators-legacy@^1.3.5:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-decorators-legacy/-/babel-plugin-transform-decorators-legacy-1.3.5.tgz#0e492dffa0edd70529072887f8aa86d4dd8b40a1"
   dependencies:
@@ -3807,8 +3811,8 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.47:
-  version "1.3.49"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.49.tgz#651384b0d81f078a96639b2b36975141b7915004"
+  version "1.3.50"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.50.tgz#7438b76f92b41b919f3fbdd350fbd0757dacddf7"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -8811,8 +8815,8 @@ postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0
     supports-color "^3.2.3"
 
 postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.17:
-  version "6.0.22"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.22.tgz#e23b78314905c3b90cbd61702121e7a78848f2a3"
+  version "6.0.23"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.23.tgz#61c82cc328ac60e677645f979054eb98bc0e3324"
   dependencies:
     chalk "^2.4.1"
     source-map "^0.6.1"
@@ -10000,7 +10004,7 @@ resolve@^1.1.6, resolve@^1.1.7, resolve@^1.2.0, resolve@^1.3.2, resolve@^1.5.0, 
   dependencies:
     path-parse "^1.0.5"
 
-rest-facade@^1.10.0:
+rest-facade@^1.10.1:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/rest-facade/-/rest-facade-1.10.1.tgz#a9b030ff50df28c9ea1a2719f94e369c47167d20"
   dependencies:
