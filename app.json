@@ -22,7 +22,13 @@
       ]
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "租屋網 想訪問您的照片庫",
+        "NSCameraUsageDescription": "租屋網 想用您的相機",
+        "NSPhotoLibraryAddUsageDescription": "租屋網 想將照片保存到您的照片庫",
+        "NSMicrophoneUsageDescription": "租屋網 想要您的麥克風（視頻）"
+      }
     },
     "android": {
       "package": "com.rentedhouse"
