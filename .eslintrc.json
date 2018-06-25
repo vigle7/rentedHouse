@@ -50,12 +50,13 @@
     "no-unused-vars": [
       "error",
       {
-        "argsIgnorePattern": "(state|autobind)"
+        "argsIgnorePattern": "(state|dispatch)"
       }
     ],
     "quote-props": "off",
     "quotes": "off",
-    "import/first": 0,
-    "jsx-a11y/href-no-hash": 0
+    "import/first": "off",
+    "jsx-a11y/href-no-hash": "off",
+    "arrow-parens": "off"
   }
 }
