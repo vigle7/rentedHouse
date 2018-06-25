@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text, Button, Image } from 'react-native'
+import { View, Button, Image } from 'react-native'
 import autobind from 'autobind-decorator'
-//import RNFetchBlob from 'rn-fetch-blob'
+// import RNFetchBlob frdom 'rn-fetch-blob'
 import { ImagePicker, Permissions } from 'expo'
 import { connect } from 'react-redux'
 import { Storage } from 'aws-amplify'
@@ -16,44 +16,26 @@ import styles from './Styles/StorageStyle'
 class Storagetest extends Component {
   constructor(props) {
     super(props)
-    this.state = { image: null, }
-  }
-
-
-
-  readFile(filePath) {
-    return RNFetchBlob.fs.readFile(imagePath).then(buffer => {
-      Storage.put(key, buffer, {
-        contentType: imageType
-      })
-    }).catch(e => {
-      console.log(e);
-    })
-  }
-
-
-
-  componentDidMount() {
-
+    this.state = { image: null }
   }
 
   @autobind
-  async _pickImage() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+  async pickImage() {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL)
     if (status === 'granted') {
-      let image = await ImagePicker.launchImageLibraryAsync({
+      const image = await ImagePicker.launchImageLibraryAsync({
         allowsEditing: true,
         aspect: [4, 3],
       })
       console.log(image)
-      this.setState({ image: image.uri });
+      this.setState({ image: image.uri })
       fetch(image.uri)
         .then(response => response.blob())
         .then(Buffer => Storage.put('testImage', Buffer))
         .then(x => console.log('SAVED IMAGE WITH KEY', x) || x)
-        .catch(err => console.log("IMAGE UPLOAD ERROR", err));
+        .catch(err => console.log('IMAGE UPLOAD ERROR', err))
     } else {
-      throw new Error('CAMERA_ROLL permission not granted');
+      throw new Error('CAMERA_ROLL permission not granted')
     }
   }
 
@@ -62,7 +44,7 @@ class Storagetest extends Component {
       <View style={styles.container}>
         <Button
           title="選擇圖片並上傳"
-          onPress={this._pickImage}
+          onPress={this.pickImage}
         />
 
         {this.state.image &&
@@ -70,14 +52,12 @@ class Storagetest extends Component {
       </View>
     )
   }
-
-
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Storagetest)
