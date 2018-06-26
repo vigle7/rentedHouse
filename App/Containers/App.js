@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import Amplify from 'aws-amplify'
+import { withAuthenticator } from 'aws-amplify-react-native'
 import aws_exports from '../../src/aws-exports'
 import '../Config'
 import DebugConfig from '../Config/DebugConfig'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
+
 
 // create our store
 const store = createStore()
@@ -30,8 +32,7 @@ class App extends Component {
     )
   }
 }
-
 // allow reactotron overlay for fast design in dev mode
 export default DebugConfig.useReactotron
   ? console.tron.overlay(App)
-  : App
+  : withAuthenticator(App)

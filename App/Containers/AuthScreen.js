@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import { Auth } from 'aws-amplify'
+import { Font } from 'expo'
 import {
   Icon,
   FormLabel,
@@ -28,6 +29,7 @@ class AuthScreen extends Component {
       email: '',
       phoneNumber: '',
       errorMessage: '',
+      fontLoaded: false,
     }
 
     this.baseState = this.state
@@ -39,13 +41,17 @@ class AuthScreen extends Component {
     this.onPhoneSubmit = this.onPhoneSubmit.bind(this)
   }
 
+  async componentDidMount() {
+    await Font.loadAsync({ 'FontAwesome': require('@expo/vector-icons/fonts/FontAwesome.ttf') })
+
+    this.setState({ fontLoaded: true })
+  }
 
   onPhoneSubmit(event) {
     const isValidPhone = this.checkPhonePattern(event.nativeEvent.text)
 
     this.setState({ errorMessage: !isValidPhone && 'Please enter a phone number with the format +(countrycode)(number) such as +12223334444' })
   }
-
 
   onSignUp() {
     this.setState(this.baseState)
@@ -174,13 +180,15 @@ class AuthScreen extends Component {
             />
             {false && <FormValidationMessage>Error message</FormValidationMessage>}
           </View>
-          <Button
-            raised
-            large
-            title="Sign Up"
-
-            onPress={this.handleSignUp}
-          />
+          {this.state.fontLoaded ? (
+            <Button
+              raised
+              large
+              title="Sign Up"
+              icon={{ name: 'lock', size: 18, type: 'font-awesome' }}
+              onPress={this.handleSignUp}
+            />
+          ) : null}
           {this.state.showMFAPrompt &&
             <MFAPrompt
               onValidate={this.handleMFAValidate}
