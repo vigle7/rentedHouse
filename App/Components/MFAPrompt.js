@@ -32,7 +32,6 @@ export default class MFAPrompt extends React.Component {
     super(props)
     this.state = {
       promptTitle: 'Enter code',
-      code: '',
     }
     this.handleCancel = this.handleCancel.bind(this)
     this.handleValidateMFACode = this.handleValidateMFACode.bind(this)
@@ -67,7 +66,7 @@ export default class MFAPrompt extends React.Component {
   render() {
     return (
       <Prompt
-        title="proptitle"
+        title={this.state.promptTitle}
         placeholder="Code"
         textInputProps={{
           keyboardType: 'numeric',

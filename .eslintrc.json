@@ -57,6 +57,7 @@
     "quotes": "off",
     "import/first": "off",
     "jsx-a11y/href-no-hash": "off",
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "react/no-string-refs": "off"
   }
 }
