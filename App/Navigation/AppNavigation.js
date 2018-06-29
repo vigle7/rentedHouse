@@ -14,8 +14,8 @@ const PrimaryNav = StackNavigator({
   LaunchScreen: { screen: LaunchScreen },
 }, {
     // Default config for all screens
+    initialRouteName: 'GoogleMapScreen',
     headerMode: 'none',
-    initialRouteName: 'AuthScreen',
     navigationOptions: {
       headerStyle: styles.header,
     },
