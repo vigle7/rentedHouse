@@ -9,6 +9,7 @@ import {
   Button,
 } from 'react-native-elements'
 import { connect } from 'react-redux'
+import API from '../../App/Services/Api'
 import AppFontLoader from '../Components/AppFontLoader'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
@@ -19,6 +20,7 @@ import MFAPrompt from '../Components/MFAPrompt'
 import styles from './Styles/AuthScreenStyle'
 
 class AuthScreen extends Component {
+  api = {}
   constructor(props) {
     super(props)
 
@@ -39,8 +41,15 @@ class AuthScreen extends Component {
     this.handleMFASuccess = this.handleMFASuccess.bind(this)
     this.handleMFACancel = this.handleMFACancel.bind(this)
     this.onPhoneSubmit = this.onPhoneSubmit.bind(this)
+    this.api = API.create()
   }
-
+  componentDidMount() {
+    setTimeout(() => {
+      this.api.getRoot().then((result) => {
+        const aa = result
+      })
+    }, 3000)
+  }
   onPhoneSubmit(event) {
     const isValidPhone = this.checkPhonePattern(event.nativeEvent.text)
 

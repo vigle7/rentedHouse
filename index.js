@@ -1,3 +1,4 @@
+import './ReactotronConfig'
 import './App/Config/ReactotronConfig'
 import Expo from 'expo'
 import DebugConfig from './App/Config/DebugConfig'
