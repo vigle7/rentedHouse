@@ -2,12 +2,61 @@
 apps:
   react-native: !com.amazonaws.mobilehub.v0.AppDO {}
 features:
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      HouseCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: HouseCRUD
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths:
+          /House: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/House-20180702101825.zip
+            description: 'Handler for calls to resource path : /House/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: zflSO0fCoWSzlnc4oHFp4Q0+tJb1PQyPypKT1ZNbAOQ=
+            memorySize: '128'
+            modified: '2018-07-02T02:19:52.922+0000'
+            name: House
+            runtime: nodejs6.10
+            timeout: '3'
+            version: ZcEaUP0UEkxp7iG5OivBA72SHiqnWXhZ
+          '/House/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/House-20180702101825.zip
+            description: 'Handler for calls to resource path : /House/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: zflSO0fCoWSzlnc4oHFp4Q0+tJb1PQyPypKT1ZNbAOQ=
+            memorySize: '128'
+            modified: '2018-07-02T02:19:52.922+0000'
+            name: House
+            runtime: nodejs6.10
+            timeout: '3'
+            version: gVwQGoX_n9Qy4BF50SHY8wdDpc6kNxEi
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
       visibility: public-global
     components:
       release: !com.amazonaws.mobilehub.v0.Bucket {}
+  database: !com.amazonaws.mobilehub.v0.Database 
+    components:
+      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
+        tables:
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              floor: S
+              price: S
+              title: S
+            hashKeyName: title
+            hashKeyType: S
+            rangeKeyName: price
+            rangeKeyType: S
+            tableName: ___DYNAMIC_PREFIX___-House
+            tablePrivacy: public
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:
       analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}

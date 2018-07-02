@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, Button, TextInput, StyleSheet } from 'react-native'
+import { Text, View, TextInput, StyleSheet, Image } from 'react-native'
+import { Button } from 'react-native-elements'
 import autobind from 'autobind-decorator'
+import { ImagePicker, Permissions } from 'expo'
+import { Actions } from 'react-native-router-flux'
+
 // import Amplify, { API } from 'aws-amplify'
-import { API } from 'aws-amplify'
+import { API, Storage } from 'aws-amplify'
 // import aws_exports from '../../src/aws-exports'
 
 // Amplify.configure(aws_exports)
@@ -13,6 +17,7 @@ export default class LaunchScreen extends Component {
     this.state = {
       apiResponse: null,
       title: '0',
+      image: null,
     }
   }
 
@@ -61,7 +66,6 @@ export default class LaunchScreen extends Component {
   async deleteNote() {
     const path = `/House/object/${this.state.title}/800`
     try {
-      debugger
       const apiResponse = await API.del('HouseCRUD', path)
       console.log(`response from deleteing hosue: ${apiResponse}`)
       this.setState({ apiResponse })
@@ -69,15 +73,50 @@ export default class LaunchScreen extends Component {
       console.log(e)
     }
   }
+  @autobind
+  async pickImage() {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL)
+    if (status === 'granted') {
+      const image = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: true,
+        aspect: [4, 3],
+      })
+      console.log(image)
+      this.setState({ image: image.uri })
+      fetch(image.uri)
+        .then(response => response.blob())
+        .then(Buffer => Storage.put(this.state.title, Buffer))
+        .then(x => console.log('SAVED IMAGE WITH KEY', x) || x)
+        .catch(err => console.log('IMAGE UPLOAD ERROR', err))
+    } else {
+      throw new Error('CAMERA_ROLL permission not granted')
+    }
+  }
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'transparent',
+      }}
+      >
         <Text>Response: {this.state.apiResponse && JSON.stringify(this.state.apiResponse)}</Text>
         <Button title="Save Note" onPress={this.saveNote} />
         <Button title="Get Note" onPress={this.getNote} />
         <Button title="Delete Note" onPress={this.deleteNote} />
+        <Button title="Go to TabBar page" onPress={Actions.drawer} />
         <TextInput style={styles.textInput} autoCapitalize="none" onChangeText={this.handleChangeNoteId} />
+        <View>
+          <Button
+            title="選擇圖片並上傳"
+            onPress={this.pickImage}
+          />
+
+          {this.state.image &&
+            <Image source={{ uri: this.state.image }} style={{ width: 200, height: 200 }} />}
+        </View>
       </View>
     )
   }

@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19002,
-  "packagerPid": 96331,
-  "expoServerNgrokUrl": "https://4x-asm.vigle7.rentedhouse.exp.direct",
-  "packagerNgrokUrl": "https://packager.4x-asm.vigle7.rentedhouse.exp.direct",
-  "ngrokPid": 96354
+  "expoServerPort": 19002,
+  "packagerPort": 19004,
+  "packagerPid": 12678,
+  "expoServerNgrokUrl": "https://qk-dax.vigle7.rentedhouse.exp.direct",
+  "packagerNgrokUrl": "https://packager.qk-dax.vigle7.rentedhouse.exp.direct",
+  "ngrokPid": 12701
 }

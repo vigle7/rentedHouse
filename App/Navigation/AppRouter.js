@@ -1,29 +1,3 @@
-// import { StackNavigator } from 'react-navigation'
-// import GoogleMapScreen from '../Containers/GoogleMapScreen'
-// import AuthScreen from '../Containers/AuthScreen'
-// import Storagetest from '../Containers/Storagetest'
-// import LaunchScreen from '../Containers/LaunchScreen'
-
-// import styles from './Styles/NavigationStyles'
-
-// // Manifest of possible screens
-// const PrimaryNav = StackNavigator({
-//   GoogleMapScreen: { screen: GoogleMapScreen },
-//   AuthScreen: { screen: AuthScreen },
-//   Storagetest: { screen: Storagetest },
-//   LaunchScreen: { screen: LaunchScreen },
-// }, {
-//     // Default config for all screens
-//     headerMode: 'none',
-//     initialRouteName: 'AuthScreen',
-//     navigationOptions: {
-//       headerStyle: styles.header,
-//     },
-//   })
-
-// export default PrimaryNav
-
-
 import React from 'react'
 import { Platform } from 'react-native'
 import {
@@ -34,11 +8,17 @@ import {
   Modal,
   Stack,
   Lightbox,
+  Tabs,
+  Drawer,
 } from 'react-native-router-flux'
 import GoogleMapScreen from '../Containers/GoogleMapScreen'
 import AuthScreen from '../Containers/AuthScreen'
 import Storagetest from '../Containers/Storagetest'
 import LaunchScreen from '../Containers/LaunchScreen'
+import AddHouseScreen from '../Containers/AddHouseScreen'
+import HouseList from '../Containers/HouseList'
+import TabIcon from '../Components/TabIcon'
+import { DrawerContent } from '../Components/DrawerContent'
 
 const reducerCreate = params => {
   const defaultReducer = new Reducer(params)
@@ -75,16 +55,54 @@ const AppRouter = () => (
             key="root"
             titleStyle={{ alignSelf: 'center' }}
           >
-            <Scene key="GoogleMapScreen" component={GoogleMapScreen} />
-            <Scene key="AuthScreen" component={AuthScreen} initial />
-            <Scene key="Storagetest" component={Storagetest} />
-            <Scene key="LaunchScreen" component={LaunchScreen} />
+            <Drawer
+              hideNavBar
+              key="drawer"
+              contentComponent={DrawerContent}
+              drawerWidth={300}
+            >
+              <Scene key="AddHouseScreen" hideNavBar panHandlers={null}>
+                <Tabs
+                  key="tabbar"
+                  showLabel={false}
+                  lazy
+                  swipeEnabled={false}
+                  activeBackgroundColor="white"
+                  inactiveBackgroundColor="rgba(255, 0, 0, 0.5)"
+                >
+                  <Scene
+                    hideNavBar
+                    key="MY_WATER_KEY"
+                    component={AddHouseScreen}
+                    icon={TabIcon}
+
+                  />
+                  <Scene
+                    hideNavBar
+                    key="INBOX_KEY"
+                    component={AuthScreen}
+                    icon={TabIcon}
+                    initial
+                  />
+                  <Scene
+                    hideNavBar
+                    key="MY_ACCOUNT_KEY"
+                    component={AuthScreen}
+                    icon={TabIcon}
+                  />
+                </Tabs>
+              </Scene>
+              <Scene key="GoogleMapScreen" component={GoogleMapScreen} />
+              <Scene key="AuthScreen" component={AuthScreen} />
+              <Scene key="Storagetest" component={Storagetest} />
+              <Scene key="LaunchScreen" component={LaunchScreen} />
+
+
+            </Drawer>
           </Stack>
+
         </Lightbox>
-
       </Modal>
-
-
     </Overlay>
   </Router>
 )
