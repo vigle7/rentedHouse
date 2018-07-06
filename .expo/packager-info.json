@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19002,
-  "packagerPort": 19004,
-  "packagerPid": 12678,
+  "expoServerPort": 19000,
+  "packagerPort": 19002,
+  "packagerPid": 15373,
   "expoServerNgrokUrl": "https://qk-dax.vigle7.rentedhouse.exp.direct",
   "packagerNgrokUrl": "https://packager.qk-dax.vigle7.rentedhouse.exp.direct",
-  "ngrokPid": 12701
+  "ngrokPid": 15389
 }

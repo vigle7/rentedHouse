@@ -75,14 +75,20 @@ const AppRouter = () => (
                     key="MY_WATER_KEY"
                     component={AddHouseScreen}
                     icon={TabIcon}
-
+                  />
+                  <Scene
+                    hideNavBar
+                    key="HouseList"
+                    component={HouseList}
+                    icon={TabIcon}
+                    initial
                   />
                   <Scene
                     hideNavBar
                     key="INBOX_KEY"
                     component={AuthScreen}
                     icon={TabIcon}
-                    initial
+
                   />
                   <Scene
                     hideNavBar

@@ -18,7 +18,7 @@ const PrimaryNav = StackNavigator({
   LaunchScreen: { screen: LaunchScreen },
 }, {
     // Default config for all screens
-    initialRouteName: 'GoogleMapScreen',
+    initialRouteName: 'HouseList',
     headerMode: 'none',
     navigationOptions: {
       headerStyle: styles.header,
