@@ -7,7 +7,7 @@ import '../Config'
 import DebugConfig from '../Config/DebugConfig'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
-
+import AppFontLoader from '../Components/AppFontLoader'
 
 // create our store
 const store = createStore()
@@ -27,7 +27,9 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <RootContainer />
+        <AppFontLoader>
+          <RootContainer />
+        </AppFontLoader>
       </Provider>
     )
   }

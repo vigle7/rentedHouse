@@ -1,36 +1,35 @@
-import React, { Component } from 'react'
-import { View } from 'react-native'
-import { Auth } from 'aws-amplify'
+import React, { Component } from "react"
+import { View } from "react-native"
+import { Auth } from "aws-amplify"
 import {
   Icon,
   FormLabel,
   FormInput,
   FormValidationMessage,
   Button,
-} from 'react-native-elements'
-import { connect } from 'react-redux'
-import API from '../../App/Services/Api'
-import AppFontLoader from '../Components/AppFontLoader'
+} from "react-native-elements"
+import { connect } from "react-redux"
+import API from "../../App/Services/Api"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
-import MFAPrompt from '../Components/MFAPrompt'
+import MFAPrompt from "../Components/MFAPrompt"
 
 // Styles
-import styles from './Styles/AuthScreenStyle'
+import styles from "./Styles/AuthScreenStyle"
 
 class AuthScreen extends Component {
-  api = {}
+  api = {};
   constructor(props) {
     super(props)
 
     this.state = {
       showMFAPrompt: false,
-      username: '',
-      password: '',
-      email: '',
-      phoneNumber: '',
-      errorMessage: '',
+      username: "",
+      password: "",
+      email: "",
+      phoneNumber: "",
+      errorMessage: "",
       fontLoaded: false,
     }
 
@@ -45,7 +44,7 @@ class AuthScreen extends Component {
   }
   componentDidMount() {
     setTimeout(() => {
-      this.api.getRoot().then((result) => {
+      this.api.getRoot().then(result => {
         const aa = result
       })
     }, 3000)
@@ -53,7 +52,11 @@ class AuthScreen extends Component {
   onPhoneSubmit(event) {
     const isValidPhone = this.checkPhonePattern(event.nativeEvent.text)
 
-    this.setState({ errorMessage: !isValidPhone && 'Please enter a phone number with the format +(countrycode)(number) such as +12223334444' })
+    this.setState({
+      errorMessage:
+        !isValidPhone &&
+        "Please enter a phone number with the format +(countrycode)(number) such as +12223334444",
+    })
   }
 
   onSignUp() {
@@ -61,7 +64,6 @@ class AuthScreen extends Component {
 
     // this.props.onSignUp()
   }
-
 
   handleMFASuccess() {
     this.setState({ showMFAPrompt: false })
@@ -73,13 +75,12 @@ class AuthScreen extends Component {
     this.setState({ showMFAPrompt: false })
   }
 
-  checkPhonePattern = (phone) => /\+[1-9]\d{1,14}$/.test(phone)
-
+  checkPhonePattern = phone => /\+[1-9]\d{1,14}$/.test(phone);
 
   async handleSignUp() {
     const {
-      username, password, email, phoneNumber,
-    } = this.state
+ username, password, email, phoneNumber 
+} = this.state
     let userConfirmed = true
 
     Auth.signUp(username, password, email, phoneNumber)
@@ -98,10 +99,10 @@ class AuthScreen extends Component {
       })
   }
 
-  async handleMFAValidate(code = '') {
+  async handleMFAValidate(code = "") {
     try {
-      await Auth.confirmSignUp(this.state.username, code)
-        .then(data => console.log('sign up successful ->', data))
+      await Auth.confirmSignUp(this.state.username, code).then(data =>
+        console.log("sign up successful ->", data),)
     } catch (exception) {
       return exception.message || exception
     }
@@ -114,7 +115,9 @@ class AuthScreen extends Component {
       <View style={styles.bla}>
         <View style={styles.formContainer}>
           <View>
-            <FormValidationMessage>{this.state.errorMessage}</FormValidationMessage>
+            <FormValidationMessage>
+              {this.state.errorMessage}
+            </FormValidationMessage>
             <FormLabel>Username</FormLabel>
             <FormInput
               editable
@@ -125,11 +128,15 @@ class AuthScreen extends Component {
               returnKeyType="next"
               ref="username"
               textInputRef="usernameInput"
-              onSubmitEditing={() => { this.refs.password.refs.passwordInput.focus() }}
+              onSubmitEditing={() => {
+                this.refs.password.refs.passwordInput.focus()
+              }}
               value={this.state.username}
               onChangeText={username => this.setState({ username })}
             />
-            {false && <FormValidationMessage>Error message</FormValidationMessage>}
+            {false && (
+              <FormValidationMessage>Error message</FormValidationMessage>
+            )}
           </View>
           <View>
             <FormLabel>Password</FormLabel>
@@ -141,12 +148,16 @@ class AuthScreen extends Component {
               returnKeyType="next"
               ref="password"
               textInputRef="passwordInput"
-              onSubmitEditing={() => { this.refs.email.refs.emailInput.focus() }}
+              onSubmitEditing={() => {
+                this.refs.email.refs.emailInput.focus()
+              }}
               secureTextEntry
               value={this.state.password}
               onChangeText={password => this.setState({ password })}
             />
-            {false && <FormValidationMessage>Error message</FormValidationMessage>}
+            {false && (
+              <FormValidationMessage>Error message</FormValidationMessage>
+            )}
           </View>
           <View>
             <FormLabel>Email</FormLabel>
@@ -159,11 +170,15 @@ class AuthScreen extends Component {
               returnKeyType="next"
               ref="email"
               textInputRef="emailInput"
-              onSubmitEditing={() => { this.refs.phone.refs.phoneInput.focus() }}
+              onSubmitEditing={() => {
+                this.refs.phone.refs.phoneInput.focus()
+              }}
               value={this.state.email}
               onChangeText={email => this.setState({ email })}
             />
-            {false && <FormValidationMessage>Error message</FormValidationMessage>}
+            {false && (
+              <FormValidationMessage>Error message</FormValidationMessage>
+            )}
           </View>
           <View>
             <FormLabel>Phone Number</FormLabel>
@@ -181,33 +196,35 @@ class AuthScreen extends Component {
               onSubmitEditing={this.onPhoneSubmit}
               onChangeText={phoneNumber => this.setState({ phoneNumber })}
             />
-            {false && <FormValidationMessage>Error message</FormValidationMessage>}
+            {false && (
+              <FormValidationMessage>Error message</FormValidationMessage>
+            )}
           </View>
-          <AppFontLoader>
-            <Button
-              raised
-              large
-              title="Sign Up"
-              icon={{ name: 'lock', size: 18, type: 'font-awesome' }}
-              onPress={this.handleSignUp}
-            />
-          </AppFontLoader>
-          {this.state.showMFAPrompt &&
+          <Button
+            raised
+            large
+            title="Sign Up"
+            icon={{ name: "lock", size: 18, type: "font-awesome" }}
+            onPress={this.handleSignUp}
+          />
+          {this.state.showMFAPrompt && (
             <MFAPrompt
               onValidate={this.handleMFAValidate}
               onCancel={this.handleMFACancel}
               onSuccess={this.handleMFASuccess}
-            />}
+            />
+          )}
         </View>
       </View>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-})
+const mapStateToProps = state => ({})
 
-const mapDispatchToProps = (dispatch) => ({
-})
+const mapDispatchToProps = dispatch => ({})
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthScreen)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AuthScreen)
