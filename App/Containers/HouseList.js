@@ -1,7 +1,7 @@
 import React, { Component } from "react"
-import { View, Text, FlatList, Image } from "react-native"
+import { FlatList } from "react-native"
 import { connect } from "react-redux"
-import { Button, ListItem } from "react-native-elements"
+import { ListItem } from "react-native-elements"
 import { Storage } from "aws-amplify"
 
 class HouseList extends Component {

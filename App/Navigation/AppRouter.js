@@ -61,7 +61,7 @@ const AppRouter = () => (
               contentComponent={DrawerContent}
               drawerWidth={300}
             >
-              <Scene key="AddHouseScreen" hideNavBar panHandlers={null}>
+              <Scene key="TabStack" hideNavBar panHandlers={null}>
                 <Tabs
                   key="tabbar"
                   showLabel={false}
@@ -72,9 +72,10 @@ const AppRouter = () => (
                 >
                   <Scene
                     hideNavBar
-                    key="MY_WATER_KEY"
+                    key="AddHouseScreen"
                     component={AddHouseScreen}
                     icon={TabIcon}
+                    initial
                   />
                   <Scene
                     hideNavBar

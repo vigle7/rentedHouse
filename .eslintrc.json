@@ -9,10 +9,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     ],
     "react/prop-types": [
@@ -22,10 +19,7 @@
         "customValidators": "customValidator"
       }
     ],
-    "semi": [
-      "error",
-      "never"
-    ],
+    "semi": ["error", "never"],
     "import/no-unresolved": "off",
     "import/extensions": [
       "error",
@@ -37,22 +31,13 @@
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
     "indent": "off",
-    "max-len": [
-      "error",
-      200
-    ],
+    "max-len": ["error", 200],
     "react/prefer-stateless-function": "off",
     "camelcase": "off",
     "react/no-unescaped-entities": "off",
     "no-debugger": "off",
     "no-use-before-define": "off",
     "jsx-quotes": "off",
-    "no-unused-vars": [
-      "error",
-      {
-        "argsIgnorePattern": "(state|dispatch)"
-      }
-    ],
     "quote-props": "off",
     "quotes": "off",
     "import/first": "off",
@@ -60,6 +45,7 @@
     "arrow-parens": "off",
     "react/no-string-refs": "off",
     "import/prefer-default-export": "off",
-    "react/no-multi-comp": "off"
+    "react/no-multi-comp": "off",
+    "no-unused-vars": "off"
   }
 }
