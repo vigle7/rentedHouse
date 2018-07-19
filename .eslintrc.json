@@ -46,6 +46,7 @@
     "react/no-string-refs": "off",
     "import/prefer-default-export": "off",
     "react/no-multi-comp": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "class-methods-use-this":"off"
   }
 }

@@ -82,7 +82,6 @@ const AppRouter = () => (
                     key="HouseList"
                     component={HouseList}
                     icon={TabIcon}
-                    initial
                   />
                   <Scene
                     hideNavBar

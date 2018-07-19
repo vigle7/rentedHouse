@@ -49,6 +49,7 @@ features:
           - !com.amazonaws.mobilehub.v0.NoSQLTable 
             attributes:
               floor: S
+              picKey: S
               price: S
               title: S
             hashKeyName: title

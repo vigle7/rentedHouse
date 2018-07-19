@@ -13,6 +13,7 @@ import {
   Platform,
   ActivityIndicator,
 } from "react-native"
+import { ImagePicker, Permissions } from "expo"
 import {
   FormLabel,
   FormInput,
@@ -21,49 +22,37 @@ import {
   Icon,
   ButtonGroup,
 } from "react-native-elements"
-import autobind from 'autobind-decorator'
+import autobind from "autobind-decorator"
 import uuid from "react-native-uuid"
 import mime from "mime-types"
 import { API, Storage } from "aws-amplify"
 import colors from "../Themes/Colors"
-//import files from "../Utils/files"
+// import files from "../Utils/files"
 
 const { width, height } = Dimensions.get("window")
 
 let styles = {}
 
-export default class HouseList extends React.Component {
+export default class AddHouseScreen extends React.Component {
   static navigationOptions = {
-    title: "Add Pet",
+    title: "房屋上架",
   };
 
-  state = {
-    selectedImage: {},
-    selectedImageIndex: null,
-    images: [],
-    selectedGenderIndex: null,
-    modalVisible: false,
-    input: {
-      apiResponse: null,
-      title: "0",
-      image: null,
-    },
-    showActivityIndicator: false,
-  };
-
-  updateSelectedImage = (selectedImage, selectedImageIndex) => {
-    if (selectedImageIndex === this.state.selectedImageIndex) {
-      this.setState({
-        selectedImageIndex: null,
-        selectedImage: {},
-      })
-    } else {
-      this.setState({
-        selectedImageIndex,
-        selectedImage,
-      })
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedImage: null,
+      selectedGenderIndex: null,
+      modalVisible: false,
+      input: {
+        title: "0",
+        price: "0",
+        floor: "0",
+      },
+      showActivityIndicator: false,
     }
-  };
+  }
+
 
   updateInput = (key, value) => {
     this.setState(state => ({
@@ -72,7 +61,7 @@ export default class HouseList extends React.Component {
         [key]: value,
       },
     }))
-  };
+  }
 
   // getPhotos = () => {
   //   CameraRoll.getPhotos({
@@ -103,59 +92,58 @@ export default class HouseList extends React.Component {
     }
   }
 
-  toggleModal = () => {
+  @autobind
+  toggleModal() {
     this.setState(() => ({ modalVisible: !this.state.modalVisible }))
-  };
-
-  readImage(imageNode = null) {
-    if (imageNode === null) {
-      return Promise.resolve()
-    }
-    const { image } = imageNode
-    const result = {}
-
-    if (Platform.OS === "ios") {
-      result.type = mime.lookup(image.filename)
-    } else {
-      result.type = imageNode.type
-    }
-    const extension = mime.extension(result.type)
-    const imagePath = image.uri
-    const picName = `${uuid.v1()}.${extension}`
-    const key = `${picName}`
-    return files
-      .readFile(imagePath)
-      .then(buffer =>
-        Storage.put(key, buffer, { level: "private", contentType: result.type }),)
-      .then(fileInfo => ({ key: fileInfo.key }))
-      .then(x => console.log("SAVED", x) || x)
   }
 
-  AddHouse = async () => {
-    const petInfo = this.state.input
-    const { node: imageNode } = this.state.selectedImage
-
+  @autobind
+  async AddHouse() {
+    const { selectedImage: image } = this.state
     this.setState({ showActivityIndicator: true })
-
-    this.readImage(imageNode)
+    this.readImage(image)
       .then(fileInfo => ({
-        ...petInfo,
+        ...this.state.input,
         picKey: fileInfo && fileInfo.key,
       }))
-      .then(this.apiSavePet)
-      .then(data => {
+      .then(this.apiSaveHouse)
+      .then(apiResponse => {
+        console.log(`response from saving hosue: ${apiResponse}`)
         this.setState({ showActivityIndicator: false })
-        this.props.screenProps.handleRetrievePet()
-        this.props.screenProps.toggleModal()
+        // this.props.screenProps.handleRetrievePet()
+        // this.toggleModal()
       })
       .catch(err => {
         console.log("error saving pet...", err)
         this.setState({ showActivityIndicator: false })
       })
-  };
+  }
 
-  async apiSavePet(pet) {
-    return await API.post("Pets", "/items/pets", { body: pet })
+  @autobind
+  readImage(image = null) {
+    debugger
+    if (image === null) {
+      return Promise.resolve()
+    }
+    const result = {}
+
+    result.type = mime.lookup(image.uri)
+
+    const extension = mime.extension(result.type)
+    const imagePath = image.uri
+    const picName = `${uuid.v1()}.${extension}`
+    const key = `${picName}`
+    return fetch(imagePath)
+      .then(response => response.blob())
+      .then(Buffer => Storage.put(key, Buffer))
+      .then(fileInfo => ({ key: fileInfo.key }))
+      .then(x => console.log("SAVED IMAGE WITH KEY", x) || x)
+      .catch(err => console.log("IMAGE UPLOAD ERROR", err))
+  }
+
+  @autobind
+  async apiSaveHouse(house) {
+    return await API.post("HouseCRUD", "/House", { body: house })
   }
 
   updateGender = index => {
@@ -173,21 +161,17 @@ export default class HouseList extends React.Component {
         gender,
       },
     }))
-  };
+  }
 
   render() {
-    const {
-      selectedImageIndex,
-      selectedImage,
-      selectedGenderIndex,
-    } = this.state
+    const { selectedImage } = this.state
 
     return (
       <View style={{ flex: 1, paddingBottom: 0 }}>
         <ScrollView style={{ flex: 1 }}>
           <Text style={styles.title}>增加租屋資訊</Text>
           <TouchableWithoutFeedback onPress={this.pickImage}>
-            {selectedImageIndex === null ? (
+            {selectedImage === null ? (
               <View style={styles.addImageContainer}>
                 <Icon size={34} name="camera-roll" color={colors.grayIcon} />
                 <Text style={styles.addImageTitle}>Upload Photo</Text>
@@ -195,10 +179,18 @@ export default class HouseList extends React.Component {
             ) : (
               <Image
                 style={styles.addImageContainer}
-                source={{ uri: selectedImage.node.image.uri }}
+                source={{ uri: selectedImage.uri }}
               />
             )}
           </TouchableWithoutFeedback>
+
+          {/* {this.state.image && (
+            <Image
+              source={{ uri: this.state.image }}
+              style={{ width: 200, height: 200 }}
+            />
+          )} */}
+
           <FormLabel>標題</FormLabel>
           <FormInput
             inputStyle={styles.input}
@@ -258,17 +250,14 @@ export default class HouseList extends React.Component {
             />
           </View> */}
           <Button
-            fontFamily="lato"
+            fontFamily="FontAwesome"
             containerViewStyle={{ marginTop: 20 }}
             backgroundColor={colors.primary}
             large
             title="提交"
             onPress={this.AddHouse}
           />
-          <Text
-            onPress={this.props.screenProps.toggleModal}
-            style={styles.closeModal}
-          >
+          <Text onPress={this.toggleModal} style={styles.closeModal}>
             Dismiss
           </Text>
         </ScrollView>
@@ -317,7 +306,7 @@ styles = StyleSheet.create({
     marginBottom: 15,
   },
   input: {
-    fontFamily: "lato",
+    fontFamily: "FontAwesome",
   },
   activityIndicator: {
     backgroundColor: colors.mask,
