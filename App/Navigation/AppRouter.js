@@ -75,13 +75,14 @@ const AppRouter = () => (
                     key="AddHouseScreen"
                     component={AddHouseScreen}
                     icon={TabIcon}
-                    initial
+
                   />
                   <Scene
                     hideNavBar
                     key="HouseList"
                     component={HouseList}
                     icon={TabIcon}
+                    initial
                   />
                   <Scene
                     hideNavBar

@@ -4,31 +4,24 @@ import {
   ScrollView,
   Text,
   Animated,
-  StyleSheet,
   Image,
   Easing,
   TouchableHighlight,
-  Modal,
 } from 'react-native'
 import { Button, Icon } from 'react-native-elements'
-import { DrawerNavigator, NavigationActions, StackNavigator } from 'react-navigation'
 
 import { API, Storage } from 'aws-amplify'
-import AddPet from './AddPet'
-import ViewPet from './ViewPet'
-import UploadPhoto from '../Components/UploadPhoto'
-import SideMenuIcon from '../Components/SideMenuIcon'
-import awsmobile from '../aws-exports'
-import { colors } from 'theme'
+import colors from '../Themes/Colors'
 
 const styles = {}
-class HouseList extends Component {
+export default class HouseList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       apiResponse: null,
       loading: true,
     }
+    this.animatedIcon = new Animated.Value(0)
   }
 
   componentDidMount() {
@@ -36,7 +29,19 @@ class HouseList extends Component {
     this.animate()
   }
 
+  animate() {
+    Animated.loop(Animated.timing(
+        this.animatedIcon,
+        {
+          toValue: 1,
+          duration: 1300,
+          easing: Easing.linear,
+        },
+      )).start()
+  }
+
   handleRetrievePet() {
+    debugger
     API.get('HouseCRUD', '/House').then(apiResponse => Promise.all(apiResponse.map(async (house) => {
         // Make "key" work with paths like:
         // "private/us-east-1:7817b8c7-2a90-4735-90d4-9356d7f8f0c7/091357f0-f0bc-11e7-a6a2-937d1d45b80e.jpeg"
@@ -54,30 +59,36 @@ class HouseList extends Component {
     })
   }
 
-  renderHouse(pet, index) {
-    const uri = pet.picUrl
+  renderHouse(house, index) {
+    const uri = house.picUrl
 
     return (
       <TouchableHighlight
         onPress={() => {
-          this.props.navigation.navigate('ViewPet', { pet })
+          this.props.navigation.navigate('ViewPet', { house })
         }}
         underlayColor='transparent'
-        key={pet.petId}
+        key={house.petId}
       >
         <View style={styles.petInfoContainer}>
           <Image
             resizeMode='cover'
-            source={uri ? { uri } : require('../../assets/images/profileicon.png')}
+            source={uri ? { uri } : require('../Images/house.jpg')}
             style={styles.petInfoAvatar}
           />
-          <Text style={styles.petInfoName}>{pet.name}</Text>
+          <Text style={styles.petInfoName}>{house.name}</Text>
         </View>
       </TouchableHighlight>
     )
   }
 
   render() {
+    const { loading, apiResponse } = this.state
+    const spin = this.animatedIcon.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg'],
+    })
+
     return (
       <View style={[{ flex: 1 }]}>
         {!loading && <View style={{
@@ -93,7 +104,7 @@ class HouseList extends Component {
             containerStyle={{ width: 50, height: 50 }}
             color={colors.primary}
           />
-        </View>}
+                     </View>}
         <ScrollView style={[{ flex: 1, zIndex: 0 }]} contentContainerStyle={[loading && { justifyContent: 'center', alignItems: 'center' }]}>
           {loading && <Animated.View style={{ transform: [{ rotate: spin }] }}><Icon name='autorenew' color={colors.grayIcon} /></Animated.View>}
           {
@@ -112,12 +123,3 @@ class HouseList extends Component {
     )
   }
 }
-
-const mapStateToProps = state => ({})
-
-const mapDispatchToProps = dispatch => ({})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(HouseList)

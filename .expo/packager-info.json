@@ -1,8 +1,8 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19001,
+  "packagerPort": 19002,
+  "packagerPid": 28092,
+  "expoServerNgrokUrl": "https://3y-mnt.vigle7.rentedhouse.exp.direct",
+  "packagerNgrokUrl": "https://packager.3y-mnt.vigle7.rentedhouse.exp.direct",
+  "ngrokPid": 28111
 }
