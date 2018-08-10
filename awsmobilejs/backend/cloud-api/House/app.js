@@ -27,7 +27,6 @@ const hasSortKey = true
 const path = "/House"
 
 const awsmobile = {}
-const dynamoDb = new AWS.DynamoDB.DocumentClient()
 
 if (hasDynamicPrefix) {
   tableName = `${mhprefix}-${tableName}`
@@ -56,7 +55,7 @@ const convertUrlType = (param, type) => {
 
 app.get('/House', (req, res) => {
   // performs a DynamoDB Query operation to extract all records for the cognitoIdentityId in the table
-  dynamoDb.query({
+  dynamodb.query({
     TableName: tableName,
     KeyConditions: {
       title: {
@@ -145,7 +144,7 @@ app.get('/House/object/:title/:price', (req, res) => {
     } else if (data.Item) {
         res.json(data.Item)
       } else {
-        res.json(data) 
+        res.json(data)
       }
   })
 })

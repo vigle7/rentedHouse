@@ -41,14 +41,13 @@ export default class HouseList extends React.Component {
   }
 
   handleRetrievePet() {
-    debugger
     API.get('HouseCRUD', '/House').then(apiResponse => Promise.all(apiResponse.map(async (house) => {
         // Make "key" work with paths like:
         // "private/us-east-1:7817b8c7-2a90-4735-90d4-9356d7f8f0c7/091357f0-f0bc-11e7-a6a2-937d1d45b80e.jpeg"
         // and
         // "44b223e0-9707-11e7-a7d2-cdc5b84df56b.jpeg"
         const [, , , key] = /(([^\/]+\/){2})?(.+)$/.exec(house.picKey)
-        debugger
+        console.log('HouseCRUD apiResponse eeeeeeeeeeeee', apiResponse)
         const picUrl = house.picKey && await Storage.get(key)
 
         return { ...house, picUrl }

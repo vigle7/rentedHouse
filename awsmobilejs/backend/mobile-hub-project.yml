@@ -11,31 +11,31 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /House: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/House-20180702101825.zip
+            codeFilename: uploads/House-20180724113104.zip
             description: 'Handler for calls to resource path : /House/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: zflSO0fCoWSzlnc4oHFp4Q0+tJb1PQyPypKT1ZNbAOQ=
+            hashcode: 0reA8iF7ylh0BnGvo/zpGNsfFzuJYGgiaP5y90DVtoQ=
             memorySize: '128'
-            modified: '2018-07-02T02:19:52.922+0000'
+            modified: '2018-07-24T03:32:02.732+0000'
             name: House
             runtime: nodejs6.10
             timeout: '3'
-            version: ZcEaUP0UEkxp7iG5OivBA72SHiqnWXhZ
+            version: O.DtNqOXZnNXhZVnT1CGntseNQ.p68sS
           '/House/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/House-20180702101825.zip
+            codeFilename: uploads/House-20180724113104.zip
             description: 'Handler for calls to resource path : /House/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: zflSO0fCoWSzlnc4oHFp4Q0+tJb1PQyPypKT1ZNbAOQ=
+            hashcode: 0reA8iF7ylh0BnGvo/zpGNsfFzuJYGgiaP5y90DVtoQ=
             memorySize: '128'
-            modified: '2018-07-02T02:19:52.922+0000'
+            modified: '2018-07-24T03:32:02.732+0000'
             name: House
             runtime: nodejs6.10
             timeout: '3'
-            version: gVwQGoX_n9Qy4BF50SHY8wdDpc6kNxEi
+            version: 3VNQXYbK2U3ebh6g3UvD_aGc14qMsfTU
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
